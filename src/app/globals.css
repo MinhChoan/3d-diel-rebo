@@ -9,7 +9,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #ffffff;
     --foreground: #ededed;
   }
 }
@@ -24,4 +24,15 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+html, body, #__next, main {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  width: 70vw;
+  height: 70vh;
+  display: block;
 }
