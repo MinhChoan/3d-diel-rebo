@@ -63,10 +63,18 @@ export default function Model({ isPlaying, onPartClick }: ModelProps) {
   };
 
   useFrame(() => {
-    if (highlightedPart && nodes[highlightedPart]) {
-      (
-        (nodes[highlightedPart] as THREE.Mesh).material as MeshStandardMaterial
-      ).color.setHex(0xff0000);
+    if (highlightedPart) {
+      Object.keys(nodes).forEach((key) => {
+        const node = nodes[key];
+        if (node instanceof THREE.Mesh) {
+          const material = node.material as MeshStandardMaterial;
+          if (node.name === highlightedPart) {
+            material.color.setHex(0xff0000);
+          } else if (originalColors.current[node.name]) {
+            material.color.setHex(originalColors.current[node.name]);
+          }
+        }
+      });
     }
   });
 
